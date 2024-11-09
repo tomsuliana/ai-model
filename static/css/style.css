@@ -74,6 +74,9 @@ body {
   border-radius: 50%;
 }
 .msg-bubble {
+  display: flex;
+  flex-direction: column;
+
   max-width: 60%;
   padding: 15px;
   border-radius: 15px;
@@ -91,6 +94,24 @@ body {
 }
 .msg-info-time {
   font-size: 0.85em;
+}
+
+.msg-control {
+  display: flex;
+
+  width: 100%;
+
+  background-color: none;
+}
+
+.msg-control-yes {
+  display: flex;
+
+  padding: 5px;
+
+  border-radius: 12px;
+
+  border: 1px solid gray;
 }
 
 .left-msg .msg-bubble {
