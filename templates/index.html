@@ -63,7 +63,7 @@
   </form>
 </section>
 <script>
-if (prompt("Подтвердить проблему?", "Да") === "Да") {
+if (window.AndroidInterface) {
   window.AndroidInterface.onProblemTitleChange("Проблема из интернета");
   window.AndroidInterface.onProblemDescriptionChange("Проблема из интернета x2");
   window.AndroidInterface.createProblem();
