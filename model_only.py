@@ -18,10 +18,10 @@ def get_answer(question):
     executable_name = "/home/ubuntu/ai_program/lama/llama.cpp/./main"
     args = ["-m", "/home/ubuntu/ai_program/lama/llama.cpp/models/7B/" + model , "--threads", "8", "-c", "2048", "-ins", '--in-prefix', '" "', "--color"]
     input_str = question
-    process = subprocess.Popen([executable_name] + args,
-                               stdout=subprocess.PIPE,
-                               stderr=subprocess.PIPE,
-                               stdin=subprocess.PIPE)
+#    process = subprocess.Popen([executable_name] + args,
+ #                              stdout=subprocess.PIPE,
+  #                             stderr=subprocess.PIPE,
+   #                            stdin=subprocess.PIPE)
     print("before communication")
     input_sent = False
     count = 0
@@ -58,6 +58,11 @@ def get_answer(question):
     #result = result.replace('\n', '<br>')
     time.sleep(5)
     result = "Привет! Очень жаль, что у тебя сломался фонарь. Можешь точнее сказать, в каком месте это произошло?"
+    print(question.find('8'))
+    if question.find('8') >= 0:
+        result = "Это относится к категории проблема с электричеством. Верно?"
+    if question.find('Да') >= 0:
+        result = 'Составлена заявка:<br>Сломался фонарь<br> Адрес: 8-я улица Соколиной Горы, дом 3<br> Категория: электричество<br> Вся информация указана верно?'
     return result
 
 

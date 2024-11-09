@@ -1,0 +1,7 @@
+[1731164818] Log start
+[1731164818] Cmd: /home/ubuntu/ai_program/lama/llama.cpp/./main -m /home/ubuntu/ai_program/lama/llama.cpp/models/7B/llama-2-7b-chat.Q3_K_M.gguf --threads 8 -c 2048 -ins --in-prefix "" "" --color
+[1731164818] main: build = 1232 (feea179)
+[1731164818] main: seed  = 1731164818
+[1731164818] main: llama backend init
+[1731164818] main: load the model and apply lora adapter, if any
+[1731164826] warming up the model with an empty run
