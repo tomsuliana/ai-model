@@ -1,0 +1,7 @@
+[1731150293] Log start
+[1731150293] Cmd: /home/ubuntu/ai_program/lama/llama.cpp/./main -m /media/uliana/Data/Article/models/ggml-vocab-llama.gguf --threads 8 -c 2048 -ins --in-prefix "" "" --color
+[1731150293] main: build = 1232 (feea179)
+[1731150293] main: seed  = 1731150293
+[1731150293] main: llama backend init
+[1731150293] main: load the model and apply lora adapter, if any
+[1731150293] main: error: unable to load model

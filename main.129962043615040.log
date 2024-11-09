@@ -1,0 +1,7 @@
+[1731151418] Log start
+[1731151418] Cmd: /home/ubuntu/ai_program/lama/llama.cpp/./main -m /home/ubuntu/ai_program/lama/llama.cpp/models/llama-2-7b-chat.Q3_K_M.gguf --threads 8 -c 2048 -ins --in-prefix "" "" --color
+[1731151418] main: build = 1232 (feea179)
+[1731151418] main: seed  = 1731151418
+[1731151418] main: llama backend init
+[1731151418] main: load the model and apply lora adapter, if any
+[1731151418] main: error: unable to load model

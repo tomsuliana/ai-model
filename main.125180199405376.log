@@ -1,0 +1,7 @@
+[1731157006] Log start
+[1731157006] Cmd: /home/ubuntu/ai_program/lama/llama.cpp/./main -m /home/ubuntu/ai_program/lama/llama.cpp/models/7B/Replete-Coder-Llama3-8B-IQ4_XS.gguf --threads 8 -c 2048 -ins --in-prefix "" "" --color
+[1731157006] main: build = 1232 (feea179)
+[1731157006] main: seed  = 1731157006
+[1731157006] main: llama backend init
+[1731157006] main: load the model and apply lora adapter, if any
+[1731157006] main: error: unable to load model
