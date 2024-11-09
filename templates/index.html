@@ -83,10 +83,13 @@ const socket = new WebSocket('ws://' + location.host + '/echo');
 
 const lastMessage = "Составлена заявка:<br>Сломался фонарь<br> Адрес: 8-я улица Соколиной Горы, дом 3<br> Категория: электричество<br>Вся информация указана верно?";
 
+let count = 1;
+
 socket.addEventListener('message', ev => {
+    count++;
     const message = ev.data;
 
-    if (lastMessage === message) {
+    if (count === 4) {
         appendLastMessage(BOT_NAME, BOT_IMG, "left", ev.data);
     } else { 
         appendMessage(BOT_NAME, BOT_IMG, "left", ev.data);
