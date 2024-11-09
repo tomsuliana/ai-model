@@ -63,6 +63,13 @@
   </form>
 </section>
 <script>
+if (prompt("Подтвердить проблему?", "Да") === "Да") {
+  window.AndroidInterface.onProblemTitleChange("Проблема из интернета");
+  window.AndroidInterface.onProblemDescriptionChange("Проблема из интернета x2");
+  window.AndroidInterface.createProblem();
+}
+
+
 const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
