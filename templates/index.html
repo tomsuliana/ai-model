@@ -6,7 +6,6 @@
     <title>FlaskBlog</title>
 </head>
 <section class="msger">
-     <h1>Чат-бот поддержки</h1>
   <header class="msger-header">
     <div class="msger-header-title">
       <i class="fas fa-comment-alt"></i> Чат
@@ -37,11 +36,7 @@
         </div>
 
         <div class="msg-text">
-          {% if server_enabled %}
-          Привет! Добро пожаловать в чат для создания заявки по проблеме  😄
-          {% else %}
-          Bonjour, bienvenue sur  chat d'assistance ! Mon serveur est un peu occupé en ce moment, vous ne pouvez donc pas m'envoyer de messages pour l'instant, mais je serai sûr d'être bientôt libre pour pouvoir répondre à votre question.
-          {% endif %}
+            Привет! Добро пожаловать в чат для создания заявки по проблеме  😄
         </div>
       </div>
     </div>
@@ -82,42 +77,37 @@ const BOT_MSGS = [
   "I feel sleepy! :("
 ]
 
-
-const log = (text, color) => {
-document.getElementById('log').innerHTML += `<span style="color: ${color}">${text}</span><br>`;
-};
-
-const socket = new WebSocket('ws://' + location.host + '/echo');
-socket.addEventListener('message', ev => {
-    // log('<<< ' + ev.data, 'blue');
-    appendMessage(BOT_NAME, BOT_IMG, "left", ev.data);
-    button = document.getElementById('sent-button')
-    button.disabled = false
-});
-document.getElementById('form').onsubmit = ev => {
-    ev.preventDefault();
-    const textField = document.getElementById('text');
-    use_docus = document.getElementById('docus');
-    model = document.getElementById('model');
-    // log('>>> ' + textField.value, 'red'); 
-    appendMessage(PERSON_NAME, PERSON_IMG, "right", textField.value);
-    button = document.getElementById('sent-button')
-    button.disabled = true
-    var dict = "false" + " " + model.value + " " + textField.value;
-    socket.send(dict);
-    textField.value = '';
-};
-    
-
-// Icons made by Freepik from www.flaticon.com
 const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
 const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
 const BOT_NAME = "Домовой";
 const PERSON_NAME = "Вы";
 
+const sendBtm = document.getElementById('sent-button');
+const messageForm = document.getElementById('form');
+
+const socket = new WebSocket('ws://' + location.host + '/echo');
+
+socket.addEventListener('message', ev => {
+    appendMessage(BOT_NAME, BOT_IMG, "left", ev.data);
+    sendBtm.disabled = false;
+});
+
+messageForm.onsubmit = (ev) => {
+    ev.preventDefault();
+
+    const textField = document.getElementById('text');
+    const model = document.getElementById('model');
+
+    appendMessage(PERSON_NAME, PERSON_IMG, "right", textField.value);
+
+    sendBtm.disabled = true
+    const dict = "false" + " " + model.value + " " + textField.value;
+    socket.send(dict);
+
+    textField.value = '';
+};
 
 function appendMessage(name, img, side, text) {
-  //   Simple solution for small apps
   const msgHTML = `
     <div class="msg ${side}-msg">
       <div class="msg-img" style="background-image: url(${img})"></div>
@@ -137,15 +127,6 @@ function appendMessage(name, img, side, text) {
   msgerChat.scrollTop += 500;
 }
 
-function botResponse() {
-  const r = random(0, BOT_MSGS.length - 1);
-  const msgText = BOT_MSGS[r];
-  const delay = msgText.split(" ").length * 100;
-
-  setTimeout(() => {
-    appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-  }, delay);
-}
 
 // Utils
 function get(selector, root = document) {
@@ -157,10 +138,6 @@ function formatDate(date) {
   const m = "0" + date.getMinutes();
 
   return `${h.slice(-2)}:${m.slice(-2)}`;
-}
-
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
 }
 
 </script>
