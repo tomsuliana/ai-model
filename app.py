@@ -56,7 +56,7 @@ def echo(ws):
             ws.send(answer)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='127.0.0.1', port=8001)  # Теперь Flask обрабатывает запросы через порт 80
 
 
 def disable_button():
