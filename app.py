@@ -14,7 +14,7 @@ server_enabled = True
 
 @app.route('/')
 def index():
-         files = os.listdir('/media/uliana/Data/Article/models')
+         files = os.listdir('/root/lama/models')
          return render_template('index.html', server_enabled=server_enabled, files=files)
 
 
@@ -56,7 +56,7 @@ def echo(ws):
             ws.send(answer)
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=8001)  # Теперь Flask обрабатывает запросы через порт 80
+    app.run(host='0.0.0.0', port=8001)  # Теперь Flask обрабатывает запросы через порт 80
 
 
 def disable_button():

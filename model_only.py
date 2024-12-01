@@ -15,9 +15,9 @@ model = " "
 def get_answer(question):
     global model 
     print(model)
-    executable_name = "/home/uliana/lama/llama.cpp/./main"
-    args = ["-m", "/media/uliana/Data/Article/models/" + model , "--threads", "8", "-c", "2048", "-ins", '--in-prefix', '" "', "--color"]
-    input_str = question
+    executable_name = "/root/lama/./main"
+    args = ["-m", "/root/lama/models/" + model , "--threads", "8", "-c", "2048", "-ins", '--in-prefix', '" "', "--color"]
+    input_str = " ,  ,      .       : " + question
     process = subprocess.Popen([executable_name] + args,
                                stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE,
@@ -36,24 +36,21 @@ def get_answer(question):
         except subprocess.TimeoutExpired:
             line = process.stdout.readline()
             print(line.decode('UTF-8'))
-            if ">" in line.decode('UTF-8'):
-                count = count + 1
-                if count >= 2:
-                    print("signal")
-                    process.kill()
-                    print("killing")
-                    break
-                else:
-                    line  = line.decode('UTF-8')
-                    line = line.replace('> " "', ' ')
-                    line = line.replace('Текст', ' ')
-                    result = result + line
+            if count >= 3:
+                print("signal")
+                process.kill()
+                print("killing")
+                break
             else:
-                result = result + line.decode('UTF-8')
+                line  = line.decode('UTF-8')
+                line = line.replace('> " "', ' ')
+                line = line.replace('Текст', ' ')
+                result = result + line
         print("before trying")
+        count = count + 1
+        print(count)
     print("Сторонняя программа завершилась с кодом:", process.returncode)
     result = result.replace('\n', '<br>')
-    result = "Привет! Очень жаль, что у тебя сломался фонарь. Можешь точнее сказать, в каком месте это произошло?"
     return result
 
 
